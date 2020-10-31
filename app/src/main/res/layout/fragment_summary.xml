@@ -42,7 +42,7 @@
                 android:layout_width="0dp"
                 android:layout_weight=".3"
                 android:layout_height="50dp"
-                android:src="@drawable/add_new"
+                android:src="@drawable/plus"
 
                 />
         </LinearLayout>
@@ -115,7 +115,7 @@
                 android:layout_width="0dp"
                 android:layout_weight=".3"
                 android:layout_height="50dp"
-                android:src="@drawable/add_new"
+                android:src="@drawable/plus"
                 />
         </LinearLayout>
 

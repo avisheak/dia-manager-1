@@ -1,0 +1,154 @@
+package com.assignment.diamanager.modules.add_doctor;
+
+import android.os.Bundle;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.assignment.diamanager.R;
+import com.assignment.diamanager.common.my_validator.MyValidator;
+import com.assignment.diamanager.entity.Doctor;
+
+public class AddDoctorActivity extends AppCompatActivity {
+    View parent;
+    private EditText nameet, phoneet, emailidet;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_doctor);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
+
+        nameet = (EditText) findViewById(R.id.nameet);
+        phoneet = (EditText) findViewById(R.id.phoneet);
+        emailidet = (EditText) findViewById(R.id.emailidet);
+
+        Button bSave = (Button) findViewById(R.id.bSave);
+        Button bAddAnother = (Button) findViewById(R.id.bAddAnother);
+
+        bSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (validation())
+                {
+                    save();
+                }
+
+            }
+        });
+
+
+        bAddAnother.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EmptyForm();
+
+            }
+        });
+
+
+    }
+
+    private void EmptyForm()
+    {
+
+        nameet.setText("");
+        phoneet.setText("");
+        emailidet.setText("");
+
+    }
+
+
+    private boolean validation()
+    {
+        boolean result = true;
+
+        if (nameet.length() ==0)
+        {
+            result=false;
+            nameet.setError("Enter Name");
+        }
+        else
+        {
+            nameet.setError(null);
+        }
+
+
+        if (phoneet.length() ==0)
+        {
+            result=false;
+            phoneet.setError("Enter Phone");
+        }
+        else
+        {
+            phoneet.setError(null);
+        }
+
+
+
+
+        if (emailidet.length() ==0)
+        {
+            result=false;
+            emailidet.setError("Enter Email");
+        }
+        else
+        {
+            if(!MyValidator.isValidEmaillId(emailidet.getText().toString()))
+            {
+                result=false;
+                emailidet.setError("Invalid Email");
+            }
+            else
+            {
+                emailidet.setError(null);
+            }
+
+
+        }
+
+
+
+
+        return result;
+    }
+
+    private void save()
+    {
+        DoctorManager manager= new DoctorManager(this);
+        long l=0;
+        try{
+            String sName= nameet.getText().toString();
+            String sPhone= phoneet.getText().toString();
+            String sEmail= emailidet.getText().toString();
+
+            Doctor doctor = new Doctor(0, sName, sPhone, sEmail);
+
+            l = manager.insert(doctor);
+        }
+        catch(Exception ex)
+        {
+            Toast.makeText(this, ex.toString(), Toast.LENGTH_SHORT).show();
+        }
+
+        if(l>0) {
+            Toast.makeText(this, "Record Save", Toast.LENGTH_SHORT).show();
+            EmptyForm();
+            //  ((MainActivity) mContext).refreshTabs();
+            //finish();
+        }
+        else
+            Toast.makeText(this,"Record Not Save",Toast.LENGTH_SHORT).show();
+    }
+}

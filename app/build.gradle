@@ -4,7 +4,7 @@ android {
     compileSdkVersion 30
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId "com.assignment.diabetesrecords"
+        applicationId "com.assignment.diamanager"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
@@ -34,13 +34,9 @@ dependencies {
     implementation 'com.jjoe64:graphview:4.2.1'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
-    implementation 'com.mikepenz:materialdrawer:8.1.8'
+    // Navigation
+    def nav_version = "2.3.1"
 
-    implementation 'androidx.annotation:annotation:1.2.0-alpha01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.3'
-
-    implementation 'com.mikepenz:materialdrawer-nav:8.1.8'
-
-    // Add for Android-Iconics support
-    implementation 'com.mikepenz:materialdrawer-iconics:8.1.8'
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
 }
