@@ -9,7 +9,7 @@
     <string name="six" translatable="false">SIX</string>
     <string name="three" translatable="false">THREE</string>
     <string name="two" translatable="false">TWO</string>
-    <string name="title_activity_icon_text_tabs" translatable="false">Diabetes Records</string>
+    <string name="title_activity_icon_text_tabs" translatable="false">Dia Manager</string>
     <string name="hello_world" translatable="false">Hello world!</string>
     <string name="drawer_open" translatable="false">Drawer Opened</string>
     <string name="drawer_close" translatable="false">Drawer Closed</string>
@@ -67,6 +67,6 @@ Resistance exercise involves brief repetitive exercises with weights, weight mac
 
 </string>
     <string name="todo" translatable="false">TODO</string>
-    <string name="diabetes_records" translatable="false">Diabetes Records</string>
+    <string name="dia_manager" translatable="false">Dia Manager</string>
 
 </resources>
